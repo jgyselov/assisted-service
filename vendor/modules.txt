@@ -404,34 +404,28 @@ github.com/itchyny/gojq
 # github.com/itchyny/timefmt-go v0.1.3
 ## explicit; go 1.14
 github.com/itchyny/timefmt-go
-# github.com/jackc/chunkreader/v2 v2.0.1
-## explicit; go 1.12
-github.com/jackc/chunkreader/v2
-# github.com/jackc/pgconn v1.12.0
-## explicit; go 1.12
-github.com/jackc/pgconn
-github.com/jackc/pgconn/internal/ctxwatch
-github.com/jackc/pgconn/stmtcache
-# github.com/jackc/pgio v1.0.0
-## explicit; go 1.12
-github.com/jackc/pgio
 # github.com/jackc/pgpassfile v1.0.0
 ## explicit; go 1.12
 github.com/jackc/pgpassfile
-# github.com/jackc/pgproto3/v2 v2.3.0
-## explicit; go 1.12
-github.com/jackc/pgproto3/v2
-# github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b
+# github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a
 ## explicit; go 1.14
 github.com/jackc/pgservicefile
-# github.com/jackc/pgtype v1.11.0
-## explicit; go 1.13
-github.com/jackc/pgtype
 # github.com/jackc/pgx/v4 v4.16.0
 ## explicit; go 1.13
-github.com/jackc/pgx/v4
-github.com/jackc/pgx/v4/internal/sanitize
-github.com/jackc/pgx/v4/stdlib
+# github.com/jackc/pgx/v5 v5.2.0
+## explicit; go 1.18
+github.com/jackc/pgx/v5
+github.com/jackc/pgx/v5/internal/anynil
+github.com/jackc/pgx/v5/internal/iobufpool
+github.com/jackc/pgx/v5/internal/nbconn
+github.com/jackc/pgx/v5/internal/pgio
+github.com/jackc/pgx/v5/internal/sanitize
+github.com/jackc/pgx/v5/internal/stmtcache
+github.com/jackc/pgx/v5/pgconn
+github.com/jackc/pgx/v5/pgconn/internal/ctxwatch
+github.com/jackc/pgx/v5/pgproto3
+github.com/jackc/pgx/v5/pgtype
+github.com/jackc/pgx/v5/stdlib
 # github.com/jcchavezs/porto v0.1.0
 ## explicit; go 1.15
 github.com/jcchavezs/porto
@@ -441,7 +435,7 @@ github.com/jinzhu/copier
 # github.com/jinzhu/inflection v1.0.0
 ## explicit
 github.com/jinzhu/inflection
-# github.com/jinzhu/now v1.1.4
+# github.com/jinzhu/now v1.1.5
 ## explicit; go 1.12
 github.com/jinzhu/now
 # github.com/jmespath/go-jmespath v0.4.0
@@ -475,8 +469,6 @@ github.com/klauspost/compress/s2
 github.com/klauspost/compress/snappy
 github.com/klauspost/compress/zstd
 github.com/klauspost/compress/zstd/internal/xxhash
-# github.com/kr/pretty v0.3.0
-## explicit; go 1.12
 # github.com/krishicks/yaml-patch v0.0.10
 ## explicit
 github.com/krishicks/yaml-patch
@@ -1037,8 +1029,8 @@ go.opentelemetry.io/proto/otlp/common/v1
 go.opentelemetry.io/proto/otlp/metrics/v1
 go.opentelemetry.io/proto/otlp/resource/v1
 go.opentelemetry.io/proto/otlp/trace/v1
-# go.uber.org/atomic v1.7.0
-## explicit; go 1.13
+# go.uber.org/atomic v1.10.0
+## explicit; go 1.18
 go.uber.org/atomic
 # go.uber.org/multierr v1.6.0
 ## explicit; go 1.12
@@ -1052,7 +1044,7 @@ go.uber.org/zap/internal/color
 go.uber.org/zap/internal/exit
 go.uber.org/zap/zapcore
 go.uber.org/zap/zapgrpc
-# golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa
+# golang.org/x/crypto v0.4.0
 ## explicit; go 1.17
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
@@ -1062,8 +1054,8 @@ golang.org/x/crypto/cryptobyte/asn1
 golang.org/x/crypto/curve25519
 golang.org/x/crypto/curve25519/internal/field
 golang.org/x/crypto/ed25519
+golang.org/x/crypto/internal/alias
 golang.org/x/crypto/internal/poly1305
-golang.org/x/crypto/internal/subtle
 golang.org/x/crypto/nacl/secretbox
 golang.org/x/crypto/pbkdf2
 golang.org/x/crypto/pkcs12
@@ -1081,7 +1073,7 @@ golang.org/x/mod/internal/lazyregexp
 golang.org/x/mod/modfile
 golang.org/x/mod/module
 golang.org/x/mod/semver
-# golang.org/x/net v0.1.0
+# golang.org/x/net v0.3.0
 ## explicit; go 1.17
 golang.org/x/net/context
 golang.org/x/net/context/ctxhttp
@@ -1104,7 +1096,7 @@ golang.org/x/oauth2/google/internal/externalaccount
 golang.org/x/oauth2/internal
 golang.org/x/oauth2/jws
 golang.org/x/oauth2/jwt
-# golang.org/x/sync v0.0.0-20220819030929-7fc1605a5dde
+# golang.org/x/sync v0.0.0-20220923202941-7f9b1623fab7
 ## explicit
 golang.org/x/sync/errgroup
 golang.org/x/sync/singleflight
@@ -1117,10 +1109,10 @@ golang.org/x/sys/plan9
 golang.org/x/sys/unix
 golang.org/x/sys/windows
 golang.org/x/sys/windows/registry
-# golang.org/x/term v0.1.0
+# golang.org/x/term v0.3.0
 ## explicit; go 1.17
 golang.org/x/term
-# golang.org/x/text v0.4.0
+# golang.org/x/text v0.5.0
 ## explicit; go 1.17
 golang.org/x/text/cases
 golang.org/x/text/encoding
@@ -1300,11 +1292,11 @@ gopkg.in/yaml.v2
 # gopkg.in/yaml.v3 v3.0.1
 ## explicit
 gopkg.in/yaml.v3
-# gorm.io/driver/postgres v1.3.5
+# gorm.io/driver/postgres v1.4.6
 ## explicit; go 1.14
 gorm.io/driver/postgres
-# gorm.io/gorm v1.23.8
-## explicit; go 1.14
+# gorm.io/gorm v1.24.2
+## explicit; go 1.16
 gorm.io/gorm
 gorm.io/gorm/callbacks
 gorm.io/gorm/clause
