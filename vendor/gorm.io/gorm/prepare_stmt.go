@@ -3,8 +3,6 @@ package gorm
 import (
 	"context"
 	"database/sql"
-	"database/sql/driver"
-	"errors"
 	"reflect"
 	"sync"
 )
@@ -149,7 +147,7 @@ func (db *PreparedStmtDB) ExecContext(ctx context.Context, query string, args ..
 	stmt, err := db.prepare(ctx, db.ConnPool, false, query)
 	if err == nil {
 		result, err = stmt.ExecContext(ctx, args...)
-		if errors.Is(err, driver.ErrBadConn) {
+		if err != nil {
 			db.Mux.Lock()
 			defer db.Mux.Unlock()
 			go stmt.Close()
@@ -163,7 +161,7 @@ func (db *PreparedStmtDB) QueryContext(ctx context.Context, query string, args .
 	stmt, err := db.prepare(ctx, db.ConnPool, false, query)
 	if err == nil {
 		rows, err = stmt.QueryContext(ctx, args...)
-		if errors.Is(err, driver.ErrBadConn) {
+		if err != nil {
 			db.Mux.Lock()
 			defer db.Mux.Unlock()
 
@@ -180,14 +178,6 @@ func (db *PreparedStmtDB) QueryRowContext(ctx context.Context, query string, arg
 		return stmt.QueryRowContext(ctx, args...)
 	}
 	return &sql.Row{}
-}
-
-func (db *PreparedStmtDB) Ping() error {
-	conn, err := db.GetDBConn()
-	if err != nil {
-		return err
-	}
-	return conn.Ping()
 }
 
 type PreparedStmtTX struct {
@@ -217,7 +207,7 @@ func (tx *PreparedStmtTX) ExecContext(ctx context.Context, query string, args ..
 	stmt, err := tx.PreparedStmtDB.prepare(ctx, tx.Tx, true, query)
 	if err == nil {
 		result, err = tx.Tx.StmtContext(ctx, stmt.Stmt).ExecContext(ctx, args...)
-		if errors.Is(err, driver.ErrBadConn) {
+		if err != nil {
 			tx.PreparedStmtDB.Mux.Lock()
 			defer tx.PreparedStmtDB.Mux.Unlock()
 
@@ -232,7 +222,7 @@ func (tx *PreparedStmtTX) QueryContext(ctx context.Context, query string, args .
 	stmt, err := tx.PreparedStmtDB.prepare(ctx, tx.Tx, true, query)
 	if err == nil {
 		rows, err = tx.Tx.StmtContext(ctx, stmt.Stmt).QueryContext(ctx, args...)
-		if errors.Is(err, driver.ErrBadConn) {
+		if err != nil {
 			tx.PreparedStmtDB.Mux.Lock()
 			defer tx.PreparedStmtDB.Mux.Unlock()
 
@@ -249,12 +239,4 @@ func (tx *PreparedStmtTX) QueryRowContext(ctx context.Context, query string, arg
 		return tx.Tx.StmtContext(ctx, stmt.Stmt).QueryRowContext(ctx, args...)
 	}
 	return &sql.Row{}
-}
-
-func (tx *PreparedStmtTX) Ping() error {
-	conn, err := tx.GetDBConn()
-	if err != nil {
-		return err
-	}
-	return conn.Ping()
 }

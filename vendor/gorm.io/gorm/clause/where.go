@@ -215,12 +215,7 @@ func (not NotConditions) Build(builder Builder) {
 
 		for idx, c := range not.Exprs {
 			if idx > 0 {
-				switch c.(type) {
-				case OrConditions:
-					builder.WriteString(OrWithSpace)
-				default:
-					builder.WriteString(AndWithSpace)
-				}
+				builder.WriteString(AndWithSpace)
 			}
 
 			e, wrapInParentheses := c.(Expr)
